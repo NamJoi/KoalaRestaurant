@@ -21,33 +21,14 @@ const ResponsiveMenu = ({ open, handleScrollTo }) => {
                 </Link>
               </li>
               <li>
-                <button
-                  onClick={() => handleScrollTo("overview")} 
-                  className="hover:text-gray-300"
-                >
-                  Overview
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleScrollTo("menu")} 
-                  className="hover:text-gray-300"
-                >
-                  Menu
-                </button>
-              </li>
-              <li>
                 <Link to="/order" className="hover:text-gray-300">
                   Order
                 </Link>
               </li>
               <li>
-                <button
-                  onClick={() => handleScrollTo("about")}
-                  className="hover:text-gray-300"
-                >
-                  About Us
-                </button>
+                <Link to="/booking" className="hover:text-gray-300">
+                  Booking
+                </Link>
               </li>
             </ul>
           </div>

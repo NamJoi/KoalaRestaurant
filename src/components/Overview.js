@@ -10,7 +10,7 @@ const Overview = () => {
 
       <div className="flex flex-col lg:flex-row items-center gap-5">
         <div className="w-full lg:w-2/4">
-          <img className="rounded-lg" src="/about.jpg" alt="About Us" />
+          <img className="rounded-lg" src="/images/background.jpg" alt="About Us" />
         </div>
         <div className="w-full lg:w-2/4 p-4 space-y-3">
           <h2 className="font-semibold text-3xl">

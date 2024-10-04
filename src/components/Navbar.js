@@ -5,6 +5,7 @@ import { GrRestaurant } from "react-icons/gr";
 import { MdMenu } from "react-icons/md";
 import { PiShoppingCartThin } from "react-icons/pi";
 import ResponsiveMenu from "./ResponsiveMenu";
+import { Navbardata } from "../data/Navdata2";
 
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
@@ -32,14 +33,19 @@ const Navbar = () => {
           {/* Menu Section */}
           <div className="hidden md:block">
             <ul className="flex items-center gap-6 text-gray-600">
-              <li>
-                <Link
-                  to="/"
-                  className="inline-block py-1 px-3 hover:text-primary font-semibold"
-                >
-                  Home
-                </Link>
-              </li>
+              {Navbardata.map((item) => {
+                return (
+                  <li key={item.id}>
+                    <Link
+                    to={item.link}
+                      onClick={() => handleScrollTo(item.link.substring(1))}
+                      className="inline-block py-1 px-3 hover:text-primary font-semibold"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                );
+              })}
               {NavbarMenu.map((item) => {
                 return (
                   <li key={item.id}>
@@ -52,15 +58,6 @@ const Navbar = () => {
                   </li>
                 );
               })}
-              {/* Link for Order */}
-              <li>
-                <Link
-                  to="/order"
-                  className="inline-block py-1 px-3 hover:text-primary font-semibold"
-                >
-                  Order
-                </Link>
-              </li>
             </ul>
           </div>
           {/* Icons Section */}
