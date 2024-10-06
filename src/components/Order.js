@@ -11,8 +11,8 @@ const Order = () => {
 
         <div className="flex flex-col lg:flex-row gap-12 justify-center">
           <OrderCard img="/images/menu1.jpg" title="Shit" />
-          <OrderCard img="/images/menu2.jpg" title="Shit" />
-          <OrderCard img="/images/menu3.jpg" title="Shit" />
+          <OrderCard img="/images/menu2.jpg" title="Shit2" />
+          <OrderCard img="/images/menu3.jpg" title="Shit3" />
         </div>
       </div>
     </div>

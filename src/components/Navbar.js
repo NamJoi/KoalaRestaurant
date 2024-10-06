@@ -37,7 +37,7 @@ const Navbar = () => {
                 return (
                   <li key={item.id}>
                     <Link
-                    to={item.link}
+                      to={item.link}
                       onClick={() => handleScrollTo(item.link.substring(1))}
                       className="inline-block py-1 px-3 hover:text-primary font-semibold"
                     >
@@ -62,9 +62,12 @@ const Navbar = () => {
           </div>
           {/* Icons Section */}
           <div className="flex items-center gap-4">
-            <button className="text-2xl hover:bg-primary hover:text-white rounded-full p-2 duration-200">
+            <Link
+              to="/cart"
+              className="text-2xl hover:bg-primary hover:text-white rounded-full p-2 duration-200"
+            >
               <PiShoppingCartThin />
-            </button>
+            </Link>
             {/* Link for Login Button */}
             <Link
               to="/login"

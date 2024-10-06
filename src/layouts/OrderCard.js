@@ -1,26 +1,72 @@
-import React from "react";
-import Button from "../layouts/Button";
-import { BsStarFill } from "react-icons/bs";
+import React, { useState, useContext } from "react";
+import { CartContext } from "./CartContext";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const OrderCard = (props) => {
+  const [quantity, setQuantity] = useState(1);
+  const [message, setMessage] = useState(""); // State to handle notification message
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    const product = {
+      title: props.title,
+      img: props.img,
+      price: 15.99,
+      quantity: quantity,
+    };
+    addToCart(product); // Add the product to the cart
+
+    // Show success message
+    setMessage("Added to cart successfully!");
+
+    // Hide the message after 3 seconds
+    setTimeout(() => {
+      setMessage("");
+    }, 500);
+  };
+
+  // Increment and decrement quantity handlers
+  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+  const decrementQuantity = () =>
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
   return (
     <div className="w-full lg:w-1/4 bg-white p-3 rounded-lg flex flex-col items-center">
-      {/* Centering the image */}
       <div className="flex justify-center">
-        <img className="rounded-lg" src={props.img} alt="img" />
+        <img className="rounded-lg" src={props.img} alt={props.title} />
       </div>
-      <div className="flex flex-col items-center mt-5 gap-3">
-        <h2 className="font-semibold text-xl">{props.title}</h2>
-        <div className="flex">
-          <BsStarFill className="text-brightColor" />
-          <BsStarFill className="text-brightColor" />
-          <BsStarFill className="text-brightColor" />
-          <BsStarFill className="text-brightColor" />
-          <BsStarFill className="text-brightColor" />
-        </div>
-        <h3 className="font-semibold text-lg">$15.99</h3>
-        <Button title="Add To Cart" />
+      <h2>{props.title}</h2>
+      <p>$15.99</p>
+
+      {/* Quantity Selector */}
+      <div className="flex items-center gap-3">
+        <button
+          onClick={decrementQuantity}
+          className="px-2 py-1 bg-gray-200 rounded-full hover:bg-gray-300"
+        >
+          <FaMinus />
+        </button>
+        <span>{quantity}</span>
+        <button
+          onClick={incrementQuantity}
+          className="px-2 py-1 bg-gray-200 rounded-full hover:bg-gray-300"
+        >
+          <FaPlus />
+        </button>
       </div>
+
+      {/* Add to Cart Button */}
+      <button
+        onClick={handleAddToCart}
+        className="mt-2 px-6 py-1 border-2 border-white bg-primary hover:text-white transition-all rounded-full"
+      >
+        Add To Cart
+      </button>
+
+      {/* Success Message */}
+      {message && (
+        <div className="mt-3 text-green-500 font-semibold">{message}</div>
+      )}
     </div>
   );
 };
