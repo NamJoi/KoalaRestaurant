@@ -22,7 +22,7 @@ const OrderCard = (props) => {
     // Hide the message after 3 seconds
     setTimeout(() => {
       setMessage("");
-    }, 500);
+    }, 700);
   };
 
   // Increment and decrement quantity handlers
@@ -31,7 +31,7 @@ const OrderCard = (props) => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   return (
-    <div className="w-full lg:w-1/4 bg-white p-3 rounded-lg flex flex-col items-center">
+    <div className="w-full bg-gray-200 p-3 rounded-lg flex flex-col items-center">
       <div className="flex justify-center">
         <img className="rounded-lg" src={props.img} alt={props.title} />
       </div>
@@ -65,7 +65,7 @@ const OrderCard = (props) => {
 
       {/* Success Message */}
       {message && (
-        <div className="mt-3 text-green-500 font-semibold">{message}</div>
+        <div className="mt-3 text-green-500 font-semibold text-sm">{message}</div>
       )}
     </div>
   );
